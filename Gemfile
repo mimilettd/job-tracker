@@ -40,6 +40,12 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem "factory_girl_rails"
+  gem 'database_cleaner'
+  gem 'pry'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'launchy'
 end
 
 group :development do
