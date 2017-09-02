@@ -3,7 +3,9 @@
 <ul div="category">
   <% @categories.sort.each do |c| %>
     <li>
-      <%= link_to c.title, category_path(c) %> <%= link_to "Delete", category_path(c), :method => :delete %>
+      <%= link_to c.title, category_path(c) %>
+      <%= link_to "Edit", edit_category_path(c) %>
+      <%= link_to "Delete", category_path(c), :method => :delete %>
     </li>
   <% end %>
 </ul>
