@@ -46,6 +46,7 @@ group :development, :test do
   gem 'pry'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'launchy'
+  gem 'orderly'
 end
 
 group :development do
