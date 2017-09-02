@@ -1,5 +1,5 @@
-Title: <%= @job.title %>
-<br>
+<h1><%= @job.title %></h1>
+
 
 Description: <%= @job.description %>
 <br>
@@ -18,3 +18,8 @@ Category: <%= link_to @job.category.title, category_path(@job.category) %>
 
 <%= link_to "Edit", edit_company_job_path(@job) %> |
 <%= link_to "Delete", company_job_path(@job), :method => :delete %>
+
+<%= render partial: 'comments/form' %>
+
+<h3>Comments</h3>
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
