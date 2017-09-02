@@ -7,11 +7,12 @@ FactoryGirl.define do
       "Uses Ruby and Javascript#{n}"
     end
     sequence :level_of_interest do |n|
-      "interested#{n}"
+      n
     end
     sequence :city do |n|
       "Portland#{n}"
     end
     company
+    category
   end
 end
