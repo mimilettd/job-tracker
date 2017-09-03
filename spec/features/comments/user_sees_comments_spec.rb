@@ -10,15 +10,13 @@ RSpec.feature "User sees comments" do
 
     visit company_job_path(company, job)
 
-    expect(page).to have_content(comment_1.body)
-    expect(page).to have_content(comment_1.created_at)
-    expect(page).to have_content(comment_1.updated_at)
-    expect(page).to have_content(comment_2.body)
-    expect(page).to have_content(comment_2.created_at)
-    expect(page).to have_content(comment_2.updated_at)
-    expect(page).to have_content(comment_3.body)
-    expect(page).to have_content(comment_3.created_at)
-    expect(page).to have_content(comment_3.updated_at)
+    comments = Comment.all
+
+    comments.each do |comment|
+      expect(page).to have_content(comment.body)
+      expect(page).to have_content(comment.created_at)
+      expect(page).to have_content(comment.updated_at)
+    end
 
     expect(comment_3.body).to appear_before(comment_2.body)
     expect(comment_2.body).to appear_before(comment_1.body)

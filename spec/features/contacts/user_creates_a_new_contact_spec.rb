@@ -14,7 +14,6 @@ RSpec.feature "User creates a new contact" do
     fill_in "Position", with: position
     fill_in "Email", with: email
     click_button "Submit"
-    save_and_open_page
 
     expect(current_path).to eq(company_path(company))
     expect(page).to have_content(name)

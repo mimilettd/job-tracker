@@ -1,7 +1,10 @@
 class JobsController < ApplicationController
   def index
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    if params[:sort] == "location"
+      @jobs = Job.order(:city)
+    elsif params[:sort] == "interest"
+      @jobs = Job.order(:level_of_interest)
+    end
   end
 
   def new
@@ -41,6 +44,10 @@ class JobsController < ApplicationController
     @company = @job.company
     @job.destroy
     redirect_to company_jobs_path(@company)
+  end
+
+  def sort
+    @location = Job.find(params[:location])
   end
 
   private
