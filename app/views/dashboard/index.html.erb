@@ -1,7 +1,24 @@
-<div class="container">
-  <div class="container">
-    <h4 class="display-6">Count of Jobs by Level of Interest:</h4>
-    <canvas id="myChart" width="400" height="400"></canvas>
+<div class="row">
+  <div class="col-sm-3">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>City</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Job.count_by_city.each do |k, v| %>
+          <tr>
+            <th scope="row"><%= link_to k, jobs_path(:location => k) %></th>
+            <td><%= v %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-6">
+    <canvas id="myChart" width="200" height="200"></canvas>
     <script>
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
@@ -26,41 +43,23 @@
     });
     </script>
   </div>
+
+  <div class="col-sm-3">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>Companies</th>
+          <th>Average LOI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Job.level_of_interest_by_company.each do |subarray| %>
+          <tr>
+            <th scope="row"><%= Company.print_name(subarray[0]) %></th>
+            <td><%= subarray[1].to_i %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<h4>Top Three Companies by Level of Interest:</h4>
-<table class="table">
-  <thead class="thead-inverse">
-    <tr>
-      <th>Companies</th>
-      <th>Average Level of Interest</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% Job.level_of_interest_by_company.each do |subarray| %>
-      <tr>
-        <th scope="row"><%= Company.print_name(subarray[0]) %></th>
-        <td><%= subarray[1].to_i %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<h4>Count of Jobs by Location:</h4>
-<table class="table">
-  <thead class="thead-inverse">
-    <tr>
-      <th>City</th>
-      <th>Count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% Job.count_by_city.each do |k, v| %>
-      <tr>
-        <th scope="row"><%= link_to k, jobs_path(:location => k) %></th>
-        <td><%= v %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

@@ -1,5 +1,5 @@
 <h3>Jobs Directory</h3>
 
 <% @jobs.each do |job| %>
-  <ul><%= link_to job.title, job_path(job) %></ul>
+  <ul><%= link_to job.title, job_path(job) %> <small><i>(<%= job.city %>)</i></small></ul>
 <% end %>
