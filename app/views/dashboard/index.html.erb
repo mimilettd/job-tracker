@@ -28,20 +28,26 @@
   </div>
 </div>
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h4 class="display-6">Top Three Companies by Level of Interest:</h4>
-    <p class="lead"><%= Job.level_of_interest_by_company %></p>
-  </div>
-</div>
+<h4>Top Three Companies by Level of Interest:</h4>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Companies</th>
+      <th>Average Level of Interest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Job.level_of_interest_by_company.each do |subarray| %>
+      <tr>
+        <th scope="row"><%= Company.print_name(subarray[0]) %></th>
+        <td><%= subarray[1].to_i %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h4 class="display-6">Count of Jobs by City:</h4>
-    <p class="lead"><%= Job.count_by_city %></p>
-  </div>
-</div>
 
+<h4>Count of Jobs by Location:</h4>
 <table class="table">
   <thead class="thead-inverse">
     <tr>
@@ -50,7 +56,7 @@
     </tr>
   </thead>
   <tbody>
-    <% Job.count_by_city.each do |k, v| %><
+    <% Job.count_by_city.each do |k, v| %>
       <tr>
         <th scope="row"><%= link_to k, jobs_path(:location => k) %></th>
         <td><%= v %></td>

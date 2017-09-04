@@ -24,6 +24,4 @@ class Job < ApplicationRecord
     .count
   end
 
-
-
 end
