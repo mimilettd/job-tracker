@@ -1,4 +1,9 @@
-<h3>Jobs Directory</h3>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-4">Jobs Directory</h3>
+    <p class="lead">You've added <%= Job.all.count %> jobs. Keep it up!</p>
+  </div>
+</div>
 
 <% @jobs.each do |job| %>
   <ul><%= link_to job.title, job_path(job) %> <small><i>(<%= job.city %>)</i></small></ul>

@@ -1,4 +1,10 @@
-<h3>All Companies</h3>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-4">Company Directory</h3>
+    <p class="lead">You're interested in <%= Company.all.count %> companies.</p>
+    <%= link_to "Add More", new_company_path, class: "btn btn-outline-primary" %>
+  </div>
+</div>
 
 <div class="row">
   <% @companies.each do |company| %>

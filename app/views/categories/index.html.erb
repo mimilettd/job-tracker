@@ -1,11 +1,22 @@
-<h3>Category Index</h3>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-4">Category Index</h3>
+    <p class="lead">You're interested in <%= Job.all.count %> jobs across <%= Company.all.count %> categories.</p>
+    <%= link_to "Add More", new_category_path, class: "btn btn-outline-primary" %>
+  </div>
+</div>
 
-<ul div="category">
+<div class="row">
   <% @categories.sort.each do |c| %>
-    <li>
-      <%= link_to c.title, category_path(c) %>
-      <%= link_to "Edit", edit_category_path(c) %>
-      <%= link_to "Delete", category_path(c), :method => :delete %>
-    </li>
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><%= link_to c.title, category_path(c) %></h4>
+          <p class="card-text"><%= c.jobs.count %> jobs added</p>
+          <%= link_to "Edit", edit_category_path(c), class: "btn btn-primary btn-sm" %>
+          <%= link_to "Delete", category_path(c), method: "delete", class: "btn btn-danger btn-sm" %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

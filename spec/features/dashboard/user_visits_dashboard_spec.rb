@@ -9,7 +9,6 @@ RSpec.feature "User visits dashboard" do
 
     visit dashboard_index_path
 
-    expect(current_path).to eq('/dashboard')
     expect(page).to have_content("70")
     expect(page).to have_content("3")
   end
