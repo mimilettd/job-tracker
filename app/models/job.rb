@@ -2,7 +2,7 @@ class Job < ApplicationRecord
   validates :title, :level_of_interest, :city, presence: true
   belongs_to :company
   belongs_to :category
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   def self.level_of_interest_by_job
     self.group(:level_of_interest)
@@ -23,5 +23,7 @@ class Job < ApplicationRecord
     .order(:city)
     .count
   end
+
+
 
 end

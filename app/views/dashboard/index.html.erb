@@ -1,13 +1,60 @@
-<h1>Analytics</h1>
+<div class="container">
+  <div class="container">
+    <h4 class="display-6">Count of Jobs by Level of Interest:</h4>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <%= Job.level_of_interest_by_job.keys %>,
+            datasets: [{
+                label: '# of Jobs',
+                data: <%= Job.level_of_interest_by_job.values %>,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+  </div>
+</div>
 
-<h3>Count of Jobs by Level of Interest:</h3>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h4 class="display-6">Top Three Companies by Level of Interest:</h4>
+    <p class="lead"><%= Job.level_of_interest_by_company %></p>
+  </div>
+</div>
 
-<%= Job.level_of_interest_by_job %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h4 class="display-6">Count of Jobs by City:</h4>
+    <p class="lead"><%= Job.count_by_city %></p>
+  </div>
+</div>
 
-<h3>Top Three Companies by Level of Interest:</h3>
-
-<%= Job.level_of_interest_by_company %>
-
-<h3>Count of Jobs by City:</h3>
-
-<%= Job.count_by_city %>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>City</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Job.count_by_city.each do |k, v| %><
+      <tr>
+        <th scope="row"><%= link_to k, jobs_path(:location => k) %></th>
+        <td><%= v %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

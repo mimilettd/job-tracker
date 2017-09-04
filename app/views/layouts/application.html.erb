@@ -5,11 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <style>
+      h1 {
+        font-family: 'Pacifico', cursive;
+        font-size: 56px;
+      }
+      p {
+        font-family: sans-serif;
+        font-size: 16px;
+      }
+    </style>
+  </head>
 </head>
 <body>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/dashboard">JobTracker</a>
+      <a class="navbar-brand" href="/dashboard"><h1>JobTracker</h1></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
