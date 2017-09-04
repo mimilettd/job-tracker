@@ -1,23 +1,13 @@
-<h3><%= @job.title %></h3>
-
-
-Description: <%= @job.description %>
-<br>
-
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
-<br>
-
-Category: <%= link_to @job.category.title, category_path(@job.category) %>
-<br>
-
-<%= link_to "Edit", edit_company_job_path(@job) %> |
-<%= link_to "Delete", company_job_path(@job), :method => :delete %>
+<div class="jumbotron">
+  <h4 class="display-3"><%= @job.title %></h4>
+  <p class="lead"><%= @job.description %></p>
+  <hr class="my-4">
+  <p>Located in <%= @job.city %> / Company: <%= link_to @job.company.name, company_path(@job.company) %> / Category: <%= link_to @job.category.title, category_path(@job.category) %> / Level of Interest: <%= @job.level_of_interest %></p>
+  <p class="lead">
+    <%= link_to "Edit", edit_company_job_path(@job), class: "btn btn-primary btn-lg" %>
+    <%= link_to "Delete", company_job_path(@job), method: "delete", class: "btn btn-danger btn-lg" %>
+  </p>
+</div>
 
 <%= render partial: 'comments/form' %>
 

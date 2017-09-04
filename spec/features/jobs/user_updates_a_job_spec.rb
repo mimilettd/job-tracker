@@ -11,7 +11,7 @@ RSpec.feature "User updates a job" do
     fill_in "Title", with: "Software Engineer"
     click_button "Update"
 
-    expect(current_path).to eq(company_job_path(@company, @job))
+    expect(current_path).to eq(job_path(@job))
     expect(page).to have_content("Software Engineer")
     expect(page).to have_content(@job.description)
     expect(page).to have_content(@job.level_of_interest)

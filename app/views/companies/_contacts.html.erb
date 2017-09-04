@@ -1,5 +1,5 @@
 <div>
-  <h4 class="contact"><%= contacts.name %></h4>
-  <p class="position"><b>Position:</b> <%= contacts.position %></p>
-  <p class="email"><b>Email</b> <%= contacts.email %></p>
+  <h5 class="contact"><i><%= contacts.name %></i></h5>
+  <p><%= contacts.position %><br />
+  <%= link_to contacts.email, href: contacts.email %></p>
 </div>
