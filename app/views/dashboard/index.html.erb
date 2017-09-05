@@ -24,10 +24,10 @@
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: <%= Job.level_of_interest_by_job.keys %>,
+            labels: <%= Job.count_of_job_by_loi.keys %>,
             datasets: [{
                 label: '# of Jobs',
-                data: <%= Job.level_of_interest_by_job.values %>,
+                data: <%= Job.count_of_job_by_loi.values %>,
                 borderWidth: 1
             }]
         },

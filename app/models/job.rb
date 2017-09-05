@@ -4,7 +4,7 @@ class Job < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
 
-  def self.level_of_interest_by_job
+  def self.count_of_job_by_loi
     self.group(:level_of_interest)
     .order(:level_of_interest)
     .count
