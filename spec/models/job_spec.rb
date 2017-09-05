@@ -78,4 +78,21 @@ describe Job do
       expect(Job.level_of_interest_by_company.last[1]).to eq(20)
     end
   end
+
+  describe ".count_by_city" do
+    it "returns the count of jobs by city" do
+      cities = ["Seattle", "Portland", "Denver"]
+
+      company = Company.create(name: "Microsoft")
+      category = Category.create(title: "Engineer")
+      job = "Ruby Engineer"
+
+      cities.each do |city|
+        company.jobs.create(title: job, description: "What a great position!", level_of_interest: 30, city: city, category: category)
+      end
+
+      expect(Job.count_by_city.keys.first).to eq("Denver")
+      expect(Job.count_by_city.values.first).to eq(1)
+    end
+  end
 end
