@@ -39,7 +39,7 @@ describe Job do
   describe ".count_of_job_by_loi" do
     it "returns count of jobs by level of interest" do
       create_list(:job, 10)
-      expect(Job.count_of_job_by_loi.keys.first).to eq(10)
+      expect(Job.count_of_job_by_loi.keys.first).to eq(13)
       expect(Job.count_of_job_by_loi.values.first).to eq(1)
     end
   end
